@@ -15,7 +15,7 @@ const success = chalk.greenBright
 const error = chalk.red
 
 module.exports = async () => {
-  const templateDir = path.resolve(__dirname, '../templates/format')
+  const templateDir = path.resolve(__dirname, '../templates/format/')
   const projectDir = process.cwd()
   const prompts = await inquirer.prompt([
     {
@@ -42,6 +42,9 @@ module.exports = async () => {
   const spinner = ora(warning('loading'))
   spinner.start()
   ncp(templateDir, projectDir, async err => {
+    if (err) {
+      error(err)
+    }
     await generator({ ...prompts }, projectDir)
     spinner.succeed(success('项目创建成功'))
   })

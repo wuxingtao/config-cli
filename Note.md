@@ -18,3 +18,9 @@ men-fs： 文件读取存入内存
 men-fs-editor： 内存中的文件信息，使用ejs语法进行编译。最后调用commit方法输出最终文件
 
 * 方案二：handlebars.js 渲染引擎
+
+
+### 文件读取和写入
+
+ncp 拷贝文件夹
+recursive-readdir 递归文件夹及子文件夹下文件
