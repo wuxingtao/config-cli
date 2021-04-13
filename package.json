@@ -1,6 +1,6 @@
 {
   "name": "config-cli",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "personal configuration with cli",
   "main": "index.js",
   "bin": {
