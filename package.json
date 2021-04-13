@@ -1,0 +1,28 @@
+{
+  "name": "config-cli",
+  "version": "1.0.0",
+  "description": "personal configuration with cli",
+  "main": "index.js",
+  "bin": {
+    "config": "./bin/cli.js"
+  },
+  "scripts": {
+    "publish": "git push --tags && git push && npm publish && npm install -g @wuxingtao/config-cli"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
+  "repository": "git@github.com:wuxingtao/config-cli.git",
+  "author": "wuxingtao <xingtaowap@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "commander": "^7.2.0",
+    "handlebars": "^4.7.7",
+    "inquirer": "^8.0.0",
+    "ncp": "^2.0.0",
+    "ora": "^5.4.0",
+    "recursive-readdir": "^2.2.2",
+    "shelljs": "^0.8.4"
+  }
+}
