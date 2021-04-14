@@ -8,5 +8,5 @@ person configuration with cli
 * storybook 配置
 
 ## function
+* cli 封装Generator common Api （参考yeoman）
 * typescript 二期
-

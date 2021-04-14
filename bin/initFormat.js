@@ -41,7 +41,16 @@ module.exports = async () => {
   ])
   const spinner = ora(warning('loading'))
   spinner.start()
-  ncp(templateDir, projectDir, async err => {
+  const ignoreList = {
+    eslint: '.eslintrc.js',
+    prettier: '.prettierrc'
+  }
+  const ncpOptions = {
+    // TODO: 正则忽略存在问题
+    filter: new RegExp(/format/, 'g')
+  }
+
+  ncp(templateDir, projectDir, ncpOptions, async err => {
     if (err) {
       error(err)
     }
