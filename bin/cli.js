@@ -2,7 +2,7 @@
 
 const { program } = require('commander')
 const app = require('../app')
-const initFormat = require('./initFormat1')
+const initFormat = require('./initFormat')
 program.version(require('../package.json').version, '-v,--version').description('config cli program')
 
 program

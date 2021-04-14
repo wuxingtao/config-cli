@@ -4,57 +4,54 @@
  * @Date: 2021/4/13
  */
 const path = require('path')
-const inquirer = require('inquirer')
 const ora = require('ora')
 const ncp = require('ncp')
 const generator = require('../utils/generator')
+const Generator = require('../modules/generator/generator')
 
-const chalk = require('chalk')
-const warning = chalk.keyword('orange')
-const success = chalk.greenBright
-const error = chalk.red
-
-module.exports = async () => {
-  const templateDir = path.resolve(__dirname, '../templates/format/')
-  const projectDir = process.cwd()
-  const prompts = await inquirer.prompt([
-    {
-      type: 'checkbox',
-      message: '选择格式化类型',
-      name: 'typeList',
-      choices: [
-        {
-          name: 'eslint',
-          checked: true
-        },
-        {
-          name: 'prettier'
-        }
-      ]
-    },
-    {
-      type: 'list',
-      message: '选择应用框架',
-      name: 'mvvm',
-      choices: ['vue', 'react']
-    }
-  ])
-  const spinner = ora(warning('loading'))
-  spinner.start()
-  const ignoreList = {
-    eslint: '.eslintrc.js',
-    prettier: '.prettierrc'
+module.exports = class extends Generator {
+  async prompting() {
+    const result = await this.prompt([
+      {
+        type: 'checkbox',
+        message: '选择格式化类型',
+        name: 'typeList',
+        choices: [
+          {
+            name: 'eslint',
+            checked: true
+          },
+          {
+            name: 'prettier'
+          }
+        ]
+      },
+      {
+        type: 'list',
+        message: '选择应用框架',
+        name: 'mvvm',
+        choices: ['vue', 'react']
+      }
+    ])
+    this.props = Object.assign({}, result)
+    return result
   }
-  const ncpOptions = {
-    // TODO: 正则忽略存在问题
-    filter: new RegExp(/format/, 'g')
-  }
+  async writing() {
+    const templateDir = path.resolve(__dirname, '../templates/format/')
+    const projectDir = process.cwd()
 
-  ncp(templateDir, projectDir, ncpOptions, async err => {
-    if (err) {
-      error(err)
+    const ignoreList = {
+      eslint: '.eslintrc.js',
+      prettier: '.prettierrc'
     }
-    await generator({ ...prompts }, projectDir)
-    spinner.succeed(success('项目创建成功'))
-  })
+    const ncpOptions = {
+      // 只支持忽略文件夹
+      // filter: /format/g
+    }
+
+    // 逻辑执行
+    ncp(templateDir, projectDir, ncpOptions, async err => {
+      await generator({ ...this.props }, projectDir)
+    })
+  }
 }
