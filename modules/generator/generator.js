@@ -3,6 +3,7 @@
  * @Author: wu xingtao
  * @Date: 2021/4/14
  */
+const path = require('path')
 const EventEmitter = require('events')
 const FileEditor = require('mem-fs-editor')
 const Environment = require('./environment')
@@ -32,8 +33,9 @@ class Generator extends EventEmitter {
     this._composedWith = []
     this._transformStreams = []
 
+    // config add
     this.props = []
-
+    this._sourceRoot = path.resolve(__dirname, '../../templates')
     // this.option('help', {
     //   type: Boolean,
     //   alias: 'h',
@@ -63,6 +65,19 @@ class Generator extends EventEmitter {
     })
   }
   log() {}
+  sourceRoot(rootPath) {
+    if (typeof rootPath === 'string') {
+      this._sourceRoot = path.resolve(rootPath)
+    }
+    return this._sourceRoot
+  }
+  templatePath() {
+    let filePath = path.join.apply(path, arguments)
+    if (!path.isAbsolute(filePath)) {
+      filePath = path.join(this.sourceRoot(), filePath)
+    }
+    return filePath
+  }
 }
 
 module.exports = Generator

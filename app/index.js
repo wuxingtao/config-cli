@@ -21,6 +21,8 @@ module.exports = async classFn => {
   spinner.start()
   if (instance.writing) {
     await instance.writing()
+    // mem-fs-editor commit file from memory
+    this.fs.commit(() => {})
   }
   spinner.succeed(success('项目创建成功'))
 }

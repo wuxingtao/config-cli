@@ -37,21 +37,7 @@ module.exports = class extends Generator {
     return result
   }
   async writing() {
-    const templateDir = path.resolve(__dirname, '../templates/format/')
-    const projectDir = process.cwd()
-
-    const ignoreList = {
-      eslint: '.eslintrc.js',
-      prettier: '.prettierrc'
-    }
-    const ncpOptions = {
-      // 只支持忽略文件夹
-      // filter: /format/g
-    }
-
-    // 逻辑执行
-    ncp(templateDir, projectDir, ncpOptions, async err => {
-      await generator({ ...this.props }, projectDir)
-    })
+    const projectDir = path.join(process.cwd(), '/format/')
+    this.fs.copy(this.templatePath('format/'), projectDir)
   }
 }
