@@ -13,14 +13,11 @@
 
 * 方案一 ：ejs （所有项目文件，不管文件后缀名，都看成是ejs模板，则可以在文件内容中使用ejs语法。）
 
-men-fs： 文件读取存入内存
-
-men-fs-editor： 内存中的文件信息，使用ejs语法进行编译。最后调用commit方法输出最终文件
+1. men-fs： 文件读取存入内存
+2. men-fs-editor： 内存中的文件信息，使用ejs语法进行编译。最后调用commit方法输出最终文件
 
 * 方案二：handlebars.js 渲染引擎
 
+1. ncp 拷贝文件夹
+2. recursive-readdir 递归文件夹及子文件夹下文件
 
-### 文件读取和写入
-
-ncp 拷贝文件夹
-recursive-readdir 递归文件夹及子文件夹下文件

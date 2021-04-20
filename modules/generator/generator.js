@@ -47,6 +47,13 @@ class Generator extends EventEmitter {
 
     // 文件内存读取
     this.fs = FileEditor.create(this.env.sharedFs)
+
+    // Mirror the adapter log method on the generator.
+    //
+    // example:
+    // this.log('foo');
+    // this.log.error('bar');
+    this.log = this.env.adapter.log
   }
 
   /**
