@@ -6,7 +6,7 @@
 const inquirer = require('inquirer')
 const options = {
   env: {
-    adapter: inquirer
+    // adapter: inquirer
   }
 }
 module.exports = options

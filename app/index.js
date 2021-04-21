@@ -12,7 +12,7 @@ const warning = chalk.keyword('orange')
 const success = chalk.greenBright
 const error = chalk.red
 
-module.exports = async classFn => {
+const runLoop = async classFn => {
   const instance = new classFn(options)
   if (instance.prompting) {
     await instance.prompting()
@@ -25,8 +25,11 @@ module.exports = async classFn => {
     instance.fs.commit(() => {})
   }
   if (instance.end) {
-    instance.end()
+    spinner.stop()
+    await instance.end()
   } else {
     spinner.succeed(success('项目创建成功'))
   }
 }
+
+module.exports = runLoop

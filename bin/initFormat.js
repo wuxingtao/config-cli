@@ -52,5 +52,7 @@ module.exports = class extends Generator {
     }
   }
   install() {}
-  end() {}
+  end() {
+    this.log('配置成功')
+  }
 }

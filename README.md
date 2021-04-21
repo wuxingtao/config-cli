@@ -1,6 +1,14 @@
 # config-cli
 person configuration with cli
 
+## install
+`yarn add @wuxingtao/config-cli`
+
+`npm run @wuxingtao/config-cli`
+
+## Use
+
+
 ## TODOLIST
 * eslint+prettier+typescript 配置
 * vue config 配置

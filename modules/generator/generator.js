@@ -6,7 +6,7 @@
 const path = require('path')
 const EventEmitter = require('events')
 const FileEditor = require('mem-fs-editor')
-const Environment = require('./environment')
+const Environment = require('./environment/environment')
 
 /**
  * The `Generator` class provides the common API shared by all generators.
@@ -71,7 +71,6 @@ class Generator extends EventEmitter {
       return answers
     })
   }
-  log() {}
   sourceRoot(rootPath) {
     if (typeof rootPath === 'string') {
       this._sourceRoot = path.resolve(rootPath)
