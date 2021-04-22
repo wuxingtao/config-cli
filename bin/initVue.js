@@ -4,6 +4,7 @@
  * @Date: 2021/4/22
  */
 const path = require('path')
+const chalk = require('chalk')
 const Generator = require('../modules/generator/generator')
 
 const projectDir = path.join(process.cwd(), '/')
@@ -13,7 +14,7 @@ module.exports = class extends Generator {
       const existsPrompt = await this.prompt([
         {
           type: 'confirm',
-          message: 'vue.config.js文件已存在是否覆盖',
+          message: 'vue.config.js already exists, whether to overwrite',
           name: 'OverlayConfig'
         }
       ])
@@ -25,12 +26,12 @@ module.exports = class extends Generator {
     const result = await this.prompt([
       {
         type: 'confirm',
-        message: '是否开启CSS SourceMap',
+        message: 'Whether to open CSS SourceMap',
         name: 'cssMap'
       },
       {
         type: 'confirm',
-        message: '是否开启devServer',
+        message: 'Whether to open devServer',
         name: 'devServer'
       }
     ])
@@ -38,16 +39,16 @@ module.exports = class extends Generator {
     return result
   }
   async writing() {
-    // 终止写入
+    // break writing
     if (this.props.breakWrite) {
       return
     }
-    // 文件写入
+    // file writing
     this.fs.copyTpl(this.templatePath('vueConfig/vue.config.js'), path.join(projectDir, 'vue.config.js'), {
       props: this.props
     })
   }
   end() {
-    this.log('配置成功')
+    this.log(`${chalk.greenBright('success')} Configuration`)
   }
 }

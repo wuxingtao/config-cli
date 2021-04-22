@@ -4,6 +4,7 @@
  * @Date: 2021/4/13
  */
 const path = require('path')
+const chalk = require('chalk')
 const Generator = require('../modules/generator/generator')
 
 module.exports = class extends Generator {
@@ -11,15 +12,15 @@ module.exports = class extends Generator {
     const result = await this.prompt([
       {
         type: 'checkbox',
-        // message: '选择格式化类型',
+        message: 'check the configuration you need',
         name: 'typeList',
         choices: [
           {
-            name: 'eslint',
+            name: 'prettier',
             checked: true
           },
           {
-            name: 'prettier'
+            name: 'eslint'
           },
           {
             name: 'tsConfig'
@@ -28,7 +29,7 @@ module.exports = class extends Generator {
       },
       {
         type: 'list',
-        message: '选择应用框架',
+        message: 'pick one mvvm frame',
         name: 'mvvm',
         choices: ['vue', 'react']
       }
@@ -87,6 +88,6 @@ module.exports = class extends Generator {
   }
   install() {}
   end() {
-    this.log('配置成功')
+    this.log(`${chalk.greenBright('success')} Configuration`)
   }
 }

@@ -1,24 +1,73 @@
 # config-cli
-person configuration with cli
+
+[![NPM version][npm-image]][npm-url]
+[![license status][license-image]][npm-url]
+[![Coverage Status](https://coveralls.io/repos/github/wuxingtao/config-cli/badge.svg?branch=master)](https://coveralls.io/github/wuxingtao/config-cli?branch=master)
+
+
+>person configuration with cli
+
+>Lets you quickly get a default configuration
+>* support eslint + prettier configuration
+>* support typescript tsconfig.json
+>* support vue-cli vue.config.js
 
 ## install
 `yarn add @wuxingtao/config-cli`
 
 `npm run @wuxingtao/config-cli`
 
-## Use
+## cli help
+```
+Usage: config [options] [command]
 
+config cli program
+
+Options:
+-v,--version    output the version number
+-h, --help      display help for command
+
+Commands:
+init-format     eslint+prettier+tsconfig default configuration
+init-vue        vue-cli vue.config.js configuration
+help [command]  display help for command
+```
+
+### cli demo
+`config init-format`
+
+```
+~/test » config init-vue     
+? vue.config.js already exists, whether to overwrite Yes
+? Whether to open CSS SourceMap Yes
+? Whether to open devServer Yes
+Configuration successful
+--------------------------------------------------------------------------------
+~/test » config init-format  
+? typeList: eslint, prettier, tsConfig
+? pick one mvvm frame vue
+Configuration successful
+```
+
+`config init-vue`
 
 ## TODOLIST
-* eslint+prettier+typescript 配置
-* vue config 配置
-* rollup project 配置
-* storybook 配置
+-[x] eslint+prettier+typescript config
+-[x] vue-cli config
+-[ ] rollup project config
+-[ ] storybook config
+-[ ] webpack config
 
-## function
-* 使用mem-fs mem-fs-editor文件操作
-* cli 封装Generator common Api （参考yeoman）
-* typescript 二期
 
-## 参考
-* https://zxljack.com/2019/04/mem-fs/
+## License
+
+MIT © [xingtao](https://github.com/wuxingtao)
+
+
+[npm-image]: https://badge.fury.io/js/config-cli.svg
+[npm-url]: https://www.npmjs.com/package/config-cli
+[travis-image]: https://travis-ci.com/config-cli.svg?branch=master
+[travis-url]: https://travis-ci.com/config-cli
+[daviddm-image]: https://david-dm.org/config-cli.svg?theme=shields.io
+[daviddm-url]: https://david-dm.org/config-cli
+[license-image]: https://img.shields.io/github/license/wuxingtao/config-cli
