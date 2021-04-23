@@ -12,7 +12,7 @@ module.exports = class extends Generator {
     const result = await this.prompt([
       {
         type: 'checkbox',
-        message: 'check the configuration you need',
+        message: 'Check the configuration you need',
         name: 'typeList',
         choices: [
           {
@@ -20,7 +20,8 @@ module.exports = class extends Generator {
             checked: true
           },
           {
-            name: 'eslint'
+            name: 'eslint',
+            checked: true
           },
           {
             name: 'tsConfig'
@@ -29,9 +30,28 @@ module.exports = class extends Generator {
       },
       {
         type: 'list',
-        message: 'pick one mvvm frame',
+        message: 'Pick a linter / formatter config',
+        name: 'formatterConfig',
+        choices: [
+          {
+            name: 'ESLint + Airbnb Config',
+            value: 'Airbnb'
+          },
+          {
+            name: 'ESLint + Standard Config',
+            value: 'Standard'
+          },
+          {
+            name: 'ESLint + Prettier',
+            value: 'Prettier'
+          }
+        ]
+      },
+      {
+        type: 'list',
+        message: 'Pick one mvvm frame',
         name: 'mvvm',
-        choices: ['vue', 'react']
+        choices: ['vue']
       }
     ])
     this.props = Object.assign({}, result)
@@ -44,7 +64,8 @@ module.exports = class extends Generator {
       eslint: [
         {
           file: '.eslintrc.js',
-          relativePath: 'format/.eslintrc.js'
+          relativePath: 'format/.eslintrc.js',
+          type: 'tpl'
         },
         {
           file: '.eslintignore',
@@ -68,7 +89,13 @@ module.exports = class extends Generator {
       Object.keys(writeConfig).forEach(item => {
         if (this.props.typeList.includes(item)) {
           writeConfig[item].forEach(file => {
-            this.fs.copy(this.templatePath(file.relativePath), path.join(projectDir, file.file))
+            if (file.type === 'tpl') {
+              this.fs.copyTpl(this.templatePath(file.relativePath), path.join(projectDir, file.file), {
+                props: this.props
+              })
+            } else {
+              this.fs.copy(this.templatePath(file.relativePath), path.join(projectDir, file.file))
+            }
           })
         }
       })
