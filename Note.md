@@ -39,5 +39,12 @@
 * cli 封装Generator common Api （参考yeoman）
 * typescript 二期
 
+## 发布
+```json
+{
+  "publish": "git push --tags && git push && npm publish && npm install -g @wuxingtao/config-cli"
+}
+```
+
 ## 参考
 * https://zxljack.com/2019/04/mem-fs/

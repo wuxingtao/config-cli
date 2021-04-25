@@ -7,7 +7,7 @@
 
 >person configuration with cli
 
->Lets you quickly get a default configuration
+>Lets you quickly get a default develop configuration
 >* support eslint + prettier configuration
 >* support typescript tsconfig.json
 >* support vue-cli vue.config.js
@@ -43,10 +43,15 @@ help [command]  display help for command
 ? Whether to open devServer Yes
 Configuration successful
 --------------------------------------------------------------------------------
-~/test » config init-format  
-? typeList: eslint, prettier, tsConfig
-? pick one mvvm frame vue
-Configuration successful
+~/test » config init-format
+? Check the configuration you need prettier
+success Configuration
+--------------------------------------------------------------------------------
+~/test » config init-format
+? Check the configuration you need prettier, eslint
+? Pick a linter / formatter config ESLint + Prettier
+? Pick one mvvm frame vue
+success Configuration
 ```
 
 `config init-vue`

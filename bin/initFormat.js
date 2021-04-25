@@ -45,13 +45,19 @@ module.exports = class extends Generator {
             name: 'ESLint + Prettier',
             value: 'Prettier'
           }
-        ]
+        ],
+        when: answers => {
+          return answers.typeList && answers.typeList.indexOf('eslint') !== -1
+        }
       },
       {
         type: 'list',
         message: 'Pick one mvvm frame',
         name: 'mvvm',
-        choices: ['vue']
+        choices: ['vue'],
+        when: answers => {
+          return answers.typeList && answers.typeList.indexOf('eslint') !== -1
+        }
       }
     ])
     this.props = Object.assign({}, result)

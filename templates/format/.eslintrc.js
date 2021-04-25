@@ -5,16 +5,16 @@ module.exports = {
   },
   extends: [
     'plugin:vue/essential',
-    <% if (props.formatterConfig === 'Prettier') { -%>
+    <%_ if (props.formatterConfig === 'Prettier') { -%>
     'eslint:recommended',
     '@vue/prettier',
-    <% } %>
-    <% if (props.formatterConfig === 'Standard') { -%>
+    <%_ } -%>
+    <%_ if (props.formatterConfig === 'Standard') { -%>
     '@vue/standard'
-    <% } %>
-    <% if (props.formatterConfig === 'Airbnb') { -%>
+    <%_ } -%>
+    <%_ if (props.formatterConfig === 'Airbnb') { -%>
     '@vue/airbnb',
-    <% } -%>
+    <%_ } -%>
   ],
   parserOptions: {
     parser: 'babel-eslint'
