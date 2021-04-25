@@ -58,9 +58,13 @@ success Configuration
 
 ## TODOLIST
 -[x] eslint+prettier+typescript config
+ 
 -[x] vue-cli config
+ 
 -[ ] rollup project config
+ 
 -[ ] storybook config
+ 
 -[ ] webpack config
 
 
