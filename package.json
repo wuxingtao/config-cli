@@ -1,5 +1,5 @@
 {
-  "name": "config-cli",
+  "name": "@wuxingtao/config-cli",
   "version": "1.0.0",
   "description": "personal configuration with cli",
   "main": "index.js",
@@ -7,7 +7,8 @@
     "config": "./bin/cli.js"
   },
   "scripts": {
-    "publish": "git push --tags && git push && npm publish && npm install -g @wuxingtao/config-cli"
+    "publish": "npm --registry http://registry.npmjs.org publish --access public",
+    "publishOld": "git push --tags && git push && npm publish && npm install -g @wuxingtao/config-cli"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
