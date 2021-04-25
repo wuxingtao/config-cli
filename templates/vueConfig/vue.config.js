@@ -29,7 +29,7 @@ module.exports = {
       NODE_ENV: '"development"'
     }
   },
- <% if(props.devServer){ %>
+ <%_ if(props.devServer){ -%>
  devServer: {
    port: 8088,
      proxy: {
@@ -43,7 +43,7 @@ module.exports = {
       }
    }
  },
-<% }%>
+<%_ } -%>
   configureWebpack: {
     resolve: {
       alias,
@@ -53,12 +53,12 @@ module.exports = {
     // devtool: 'cheap-module-eval-source-map'
   },
   chainWebpack: config => {},
-  <% if (props.cssMap) { %>
+  <%_ if (props.cssMap) { -%>
   css: {
     loaderOptions: {
       less: {}
     },
     sourceMap: true
   }
-<% } %>
+<%_ } -%>
 }

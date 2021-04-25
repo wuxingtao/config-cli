@@ -1,5 +1,5 @@
 /**
- * @Desc: initFormat
+ * @Desc: initFormat Obsolete
  * @Author: wu xingtao
  * @Date: 2021/4/13
  */

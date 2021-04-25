@@ -41,7 +41,7 @@ help [command]  display help for command
 ? vue.config.js already exists, whether to overwrite Yes
 ? Whether to open CSS SourceMap Yes
 ? Whether to open devServer Yes
-Configuration successful
+success Configuration
 --------------------------------------------------------------------------------
 ~/test » config init-format
 ? Check the configuration you need prettier
