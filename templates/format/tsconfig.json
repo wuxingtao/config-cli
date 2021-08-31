@@ -12,6 +12,7 @@
     "strictPropertyInitialization": false,
     "baseUrl": ".",
     "paths": {
+      "@/*": ["src/*"]
     },
     "typeRoots": [
       "./src/@types",
